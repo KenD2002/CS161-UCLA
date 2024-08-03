@@ -1,0 +1,70 @@
+Question 1. 
+CNF generated from graph 1 with k = 3 colors (graph1_3.cnf):
+bash-4.2$ ./rsat_2.01_linux/rsat graph1_3.cnf 
+c Rsat version 2.01
+c 
+c 
+s UNSATISFIABLE
+c CNF stats: (21 vars, 64 clauses)
+c Decisions: 11
+c Conflicts: 11
+c Running time: 0.00000 seconds
+
+
+Question 2. 
+CNF generated from graph 1 with k = 4 colors (graph1_4.cnf):
+bash-4.2$ ./rsat_2.01_linux/rsat graph1_4.cnf 
+c Rsat version 2.01
+c 
+c 
+s SATISFIABLE
+c CNF stats: (28 vars, 97 clauses)
+c Decisions: 11
+c Conflicts: 0
+c Running time: 0.00000 seconds
+
+
+Question 3. 
+The output of question one indicates that there is no way to
+color the nodes with three colors such that all adjacent nodes
+has different color. The output of question two indicates that
+there is some way to color the nodes with four colors such that
+all adjacent nodes has different color.
+
+One way to assign the color is:
+
+Say we have four colors: blue, yellow, red, green. Then:
+1 - blue
+2 - yellow
+3 - green
+4 - blue
+5 - red
+6 - yellow
+7 - red 
+
+
+Question 4.
+CNF generated from graph 2 with k = 7 colors (graph2_7.cnf):
+bash-4.2$ ./rsat_2.01_linux/rsat graph2_7.cnf 
+c Rsat version 2.01
+c 
+c 
+s UNSATISFIABLE
+c CNF stats: (350 vars, 4985 clauses)
+c Decisions: 4380
+c Conflicts: 3888
+c Running time: 0.08830 seconds
+
+CNF generated from graph 2 with k = 8 colors (graph2_8.cnf):
+bash-4.2$ ./rsat_2.01_linux/rsat graph2_8.cnf 
+c Rsat version 2.01
+c 
+c 
+s SATISFIABLE
+c CNF stats: (400 vars, 5890 clauses)
+c Decisions: 824
+c Conflicts: 529
+c Running time: 0.01061 seconds
+
+From the result, we see that the minimum number of colors required
+to properly color this graph is eight.

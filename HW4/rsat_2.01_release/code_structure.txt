@@ -1,0 +1,111 @@
+======================
+Code structure of RSat
+======================
+
+This file contains brief information about the structure of
+the source code of RSat. Function summary is also provided in
+the header of every file.
+
+We structure the code such that high-level and low-level 
+functions are in different files. The hope is that if you are 
+not planning on optimizing any low-level details, you should not 
+need to touch those low-level files.
+
+For example, all the core solving functions are in solver.cpp.
+By looking at this relatively short file, you can already see
+the whole structure of the solver.
+
+Note that we have also privided a relatively extensive amount of 
+comments for all files.
+
+============
+Header files
+============
+
+structures.h : All data structures are defined here. **Study this file first before any serious modification**
+constants.h : All constants are defined here.
+flags.h : All compilation flags are defined here.
+
+==========
+.cpp files
+==========
+
+main.cpp [main function is here]
+- main 
+- parse option
+- print usage
+- signal handlers
+- print flags
+
+solver.cpp [the core solving functions]
+- solve (main solving function)
+- bcp
+- analyze conflict
+- derive conflict clause
+- assert conflict clause
+- select variable
+- backtrack
+- use saved phase
+- set decision
+- get luby
+- removable
+- process unit literal queue
+
+parse_input.cpp [input reading functions]
+- read cnf
+- sort literals
+- parse int
+- read line
+- enqueue
+
+utils.cpp [printing+debugging functions]
+- print progress header
+- print progress footer
+- print progress
+- print stack
+- print stats
+- print clause
+- print location
+
+heap.cpp [variable ordering heap]
+- all heap-related functions
+
+kb_management.cpp [adding/deleting learned clauses]
+- simplify_KB
+- reduce_KB
+- locked
+- simplify
+- remove_clause
+- add conflict driven clause
+- check sorted clauses array
+- sort clauses by activity
+
+watched_list.cpp [funcions related to watched list management]
+- add watched clause
+- remove watched clause
+- double watched len
+- half watched len
+- double decision lit len
+- half decision lit len
+- init watched literals
+- declare watched literals
+- other debugging functions related to watched list
+
+manager.cpp [dealing with manager]
+- init manager
+- init clause
+- finish up init manager
+- free manager
+
+mem_alloc.cpp [memory allocation]
+- my_malloc
+- my_calloc
+
+experimental_code.cpp [illustrative/less stable code]
+- solve_recursively
+- count_models
+- at_assertion_level
+- bcp2
+- decide
+- undo_decide
+- assert_cd_literal

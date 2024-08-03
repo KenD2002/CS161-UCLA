@@ -1,0 +1,72 @@
+========================================
+RSat 2.01 release notes and instructions
+========================================
+
+RSat is licensed for only non-commercial, research or educational purposes only.
+RSat's homepage is at http://reasoning.cs.ucla.edu/rsat
+Please contact rsat@cs.ucla.edu if you have any question/comment/bug report.
+
+This version of RSat can be run as a stand-alone program or with the SatELite preprocessor.
+Please see the usage below.
+
+The SatELite preprocessor is authored by Niklas Een.
+The version of SatELite included in this package has been modified from its original version.
+For the original source code of the preprocessor please visit 
+http://www.cs.chalmers.se/Cs/Research/FormalMethods/MiniSat/SatELite.html
+
+=============================
+Changes from previous release
+=============================
+
+- RSat command line option to print out solution. By default, RSat will not print out any solution.
+- RSat command line option to not print out any answer line (for integration with preprocessor)
+- RSat command line option to specify timeout.
+- RSat command line option to print out useful stats during execution (verbose).
+- New usage printing function (see --help option of RSat).
+- Preprocessor command line option to print out solution. By default rsat.sh will not print out any solution.
+
+=========
+Bug fixes
+=========
+- memory bug in a learned clause deletion function. Would incorrectly allocate memory if the number of learned clauses at the time of the deletion is a power of 2. This would almost certainly cause the solver to crash on the instance.
+- Memory leak fix. Close input file pointer. No memory leak--checked by valgrind.
+
+===================
+Notes to developers
+===================
+
+Please refer to code_structure.txt for an overview of the structure of the source code.
+
+=========
+Building
+=========
+
+To build (preprocessor and solver), run 
+
+> ./build.sh
+
+=====
+Usage
+=====
+
+To run RSat with the preprocessor, run 
+
+> ./rsat.sh <cnf-file>
+
+To run RSat without the preprocessor, run
+
+> ./rsat <cnf-file>
+
+By default, both modes will output an answer line (SAT/UNSAT) but not the actual solution (if SAT).
+To print out solution in either mode, run it with '-s'.
+
+Run
+
+> ./rsat.sh --help
+
+or 
+
+> ./rsat --help
+
+for the list of options.
+
